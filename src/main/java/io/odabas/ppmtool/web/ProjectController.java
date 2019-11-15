@@ -24,6 +24,7 @@ public class ProjectController {
 
     @Autowired
     private MapValidationErrorService mapValidationErrorService;
+
     @PostMapping
     public ResponseEntity<?> createNewProject(@Valid @RequestBody Project project , BindingResult result){
 
@@ -38,5 +39,16 @@ public class ProjectController {
     public ResponseEntity<?> getProjectFromIdentifier( @PathVariable String projectId){
         Project projectObjFind = projectService.findProjectByIdentifier(projectId);
         return new ResponseEntity<Project>(projectObjFind,HttpStatus.FOUND);
+    }
+
+    @GetMapping("/all")
+    public Iterable<Project> getAllProjects(){
+        return projectService.findAllProjects();
+    }
+
+    @DeleteMapping("/delete/{projectId}")
+    public ResponseEntity<?>deleteProjectFromIdentifier(@PathVariable String projectId){
+        projectService.deleteProjectByIdentifier(projectId.toUpperCase());
+        return new ResponseEntity<String>("ProjectId '"+projectId+"' was deleted succesfully",HttpStatus.OK);
     }
 }
