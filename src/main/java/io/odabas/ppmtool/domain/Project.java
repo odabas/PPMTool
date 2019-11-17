@@ -20,6 +20,7 @@ public class Project {
     @Column(updatable = false , unique = true)
     private String projectIdentifier;
     @NotBlank(message = "Project Description is required")
+    @Column(name = "description", length = 2000)
     private String description;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date start_date;
