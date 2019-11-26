@@ -1,12 +1,14 @@
 package io.odabas.ppmtool.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.lang.reflect.GenericArrayType;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -17,20 +19,27 @@ public class ProjectTask {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     @Column(updatable = false)
-    private String prokjectSequence;
+    private String projectSequence;
     @NotBlank(message = "Please include a project summary")
     private String summary;
-    private String acceptanceCrieteria;
+    private String acceptanceCriteria;
     private  String status;
     private Integer priority;
     private Date dueDate;
-    //TODO:ManyToOne Backlog
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "backlog_id",updatable = false,nullable = false)
+    @JsonIgnore
+    private Backlog backlog;
 
     @Column(updatable = false)
     private String projectIdentifier;
-
     private Date created_At;
     private Date update_At;
+
+
+
+
 
 
     @PrePersist
@@ -44,5 +53,22 @@ public class ProjectTask {
     }
 
 
-
+    @Override
+    public String toString() {
+        return "ProjectTask{" +
+                "id=" + id +
+                ", projectSequence='" + projectSequence + '\'' +
+                ", summary='" + summary + '\'' +
+                ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
+                ", status='" + status + '\'' +
+                ", priority=" + priority +
+                ", dueDate=" + dueDate +
+                ", backlog=" + backlog +
+                ", projectIdentifier='" + projectIdentifier + '\'' +
+                ", created_At=" + created_At +
+                ", update_At=" + update_At +
+                '}';
+    }
 }
+
+

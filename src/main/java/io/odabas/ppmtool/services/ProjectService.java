@@ -1,7 +1,9 @@
 package io.odabas.ppmtool.services;
 
+import io.odabas.ppmtool.domain.Backlog;
 import io.odabas.ppmtool.domain.Project;
 import io.odabas.ppmtool.exceptions.ProjectIdException;
+import io.odabas.ppmtool.repositories.BacklogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import io.odabas.ppmtool.repositories.ProjectRepository;
@@ -10,11 +12,22 @@ import io.odabas.ppmtool.repositories.ProjectRepository;
 public class ProjectService  {
 
     @Autowired
+    private BacklogRepository backlogRepository;
+    @Autowired
     private ProjectRepository projectRepository;
 
     public Project saveOrUpdateProject(Project project){
         try{
-            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            project.setProjectIdentifier(project.getProjectIdentifier());
+            if(project.getId() == null){
+                Backlog backlog = new Backlog();
+                project.setBacklog(backlog);
+                backlog.setProject(project);
+                backlog.setProjectIdentifier(project.getProjectIdentifier());
+            }
+            else if (project.getId() != null){
+                project.setBacklog(backlogRepository.findByProjectIdentifier(project.getProjectIdentifier()));
+            }
             return  projectRepository.save(project);
         }
         catch (Exception ex){

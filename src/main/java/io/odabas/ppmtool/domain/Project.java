@@ -1,6 +1,7 @@
 package io.odabas.ppmtool.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -50,5 +51,14 @@ public class Project {
         this.updated_At = new Date();
     }
 
+
+
+    @OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL ,mappedBy = "project")
+    @JsonIgnore
+    private Backlog backlog;
+
+    public String getProjectIdentifier() {
+        return projectIdentifier.toUpperCase();
+    }
 
 }
