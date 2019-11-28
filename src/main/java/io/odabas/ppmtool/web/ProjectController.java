@@ -1,6 +1,7 @@
 package io.odabas.ppmtool.web;
 
 import io.odabas.ppmtool.domain.Project;
+import io.odabas.ppmtool.domain.ProjectTask;
 import io.odabas.ppmtool.services.MapValidationErrorService;
 import io.odabas.ppmtool.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.xml.ws.Response;
 
 
 @RestController
@@ -49,5 +51,7 @@ public class ProjectController {
         projectService.deleteProjectByIdentifier(projectId.toUpperCase());
         return new ResponseEntity<String>("ProjectId '"+projectId+"' was deleted succesfully",HttpStatus.OK);
     }
+
+
 
 }
