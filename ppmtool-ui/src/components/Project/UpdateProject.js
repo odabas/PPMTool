@@ -3,7 +3,6 @@ import { getProject, createProject } from "../../actions/projectActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import { updateExpression } from "@babel/types";
 
 class UpdateProject extends Component {
   constructor() {
