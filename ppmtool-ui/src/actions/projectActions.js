@@ -27,7 +27,7 @@ export const getProjects = () => async dispatch => {
 
 export const getProject = (id, history) => async dispatch => {
   try {
-    const res = await axios.get(`http://localhost:8080/api/project/${id}`);
+    const res = await axios.get(`/api/project/${id}`);
     dispatch({
       type: GET_PROJECT,
       payload: res.data
@@ -40,7 +40,7 @@ export const getProject = (id, history) => async dispatch => {
 export const deleteProject = id => async dispatch => {
   if (
     window.confirm(
-      `Are you sure this wiil delete the project ${id} and all the data related to it`
+      `Are you sure this will delete the project ${id} and all the data related to it`
     )
   ) {
     await axios.delete(`/api/project/${id}`, {

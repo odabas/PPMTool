@@ -1,8 +1,8 @@
 import {
   GET_BACKLOG,
-  DELETE_PROJECT_TASK,
-  GET_PROJECT_TASK
-} from "../actions/types.js";
+  GET_PROJECT_TASK,
+  DELETE_PROJECT_TASK
+} from "../actions/types";
 
 const initialState = {
   project_tasks: [],
@@ -20,13 +20,12 @@ export default function(state = initialState, action) {
     case GET_PROJECT_TASK:
       return {
         ...state,
-        project_tasks: action.payload
+        project_task: action.payload
       };
 
     case DELETE_PROJECT_TASK:
       return {
         ...state
-        //TO_DO
       };
 
     default:
