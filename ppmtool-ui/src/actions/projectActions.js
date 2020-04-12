@@ -43,9 +43,7 @@ export const deleteProject = id => async dispatch => {
       `Are you sure this will delete the project ${id} and all the data related to it`
     )
   ) {
-    await axios.delete(`/api/project/${id}`, {
-      crossdomain: true
-    });
+    await axios.delete(`/api/project/${id}`);
     dispatch({
       type: DELETE_PROJECT,
       payload: id

@@ -8,6 +8,7 @@ class ProjectItem extends Component {
   onDeleteClick = id => {
     this.props.deleteProject(id);
   };
+
   render() {
     const { project } = this.props;
     return (
@@ -25,7 +26,7 @@ class ProjectItem extends Component {
               <ul className="list-group">
                 <Link to={`/projectBoard/${project.projectIdentifier}`}>
                   <li className="list-group-item board">
-                    <i className="fa fa-flag-checkered pr-1"> Project Board</i>
+                    <i className="fa fa-flag-checkered pr-1"> Project Board </i>
                   </li>
                 </Link>
                 <Link to={`/updateProject/${project.projectIdentifier}`}>

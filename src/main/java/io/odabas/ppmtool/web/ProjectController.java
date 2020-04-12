@@ -32,7 +32,7 @@ public class ProjectController {
         if(errorMap != null) return  errorMap;
 
         Project projectObj = projectService.saveOrUpdateProject(project);
-        return new ResponseEntity<>(projectObj, HttpStatus.CREATED);
+        return new ResponseEntity<Project>(projectObj, HttpStatus.CREATED);
     }
 
     @GetMapping("/{projectId}")

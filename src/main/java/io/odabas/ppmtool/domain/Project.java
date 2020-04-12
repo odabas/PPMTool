@@ -42,7 +42,7 @@ public class Project {
 
 
     @PrePersist
-    protected void OnCreate(){
+    protected void onCreate(){
         this.created_At = new Date();
     }
 

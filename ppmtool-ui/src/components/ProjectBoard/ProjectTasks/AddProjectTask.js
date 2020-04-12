@@ -28,11 +28,11 @@ class AddProjectTask extends Component {
     }
   }
 
-  // ON CHANGE
+  // on change
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  //ON SUBMIT
+  //on submit
   onSubmit(e) {
     e.preventDefault();
     const newTask = {
@@ -60,7 +60,6 @@ class AddProjectTask extends Component {
               <Link to={`/projectBoard/${id}`} className="btn btn-light">
                 Back to Project Board
               </Link>
-
               <h4 className="display-4 text-center">Add Project Task</h4>
               <p className="lead text-center">Project Name + Project Code</p>
               <form onSubmit={this.onSubmit}>
@@ -76,7 +75,7 @@ class AddProjectTask extends Component {
                     onChange={this.onChange}
                   />
                   {errors.summary && (
-                    <div className="invalid-feedback"> {errors.summary}</div>
+                    <div className="invalid-feedback">{errors.summary}</div>
                   )}
                 </div>
                 <div className="form-group">
@@ -86,7 +85,7 @@ class AddProjectTask extends Component {
                     name="acceptanceCriteria"
                     value={this.state.acceptanceCriteria}
                     onChange={this.onChange}
-                  ></textarea>
+                  />
                 </div>
                 <h6>Due Date</h6>
                 <div className="form-group">

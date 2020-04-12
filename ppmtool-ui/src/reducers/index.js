@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import ErrorReducer from "./errorReducer";
+import errorReducer from "./errorReducer";
 import projectReducer from "./projectReducer";
 import backlogReducer from "./backlogReducer";
 
 export default combineReducers({
-  errors: ErrorReducer,
+  errors: errorReducer,
   project: projectReducer,
-  backlog: backlogReducer
+  backlog: backlogReducer,
 });
