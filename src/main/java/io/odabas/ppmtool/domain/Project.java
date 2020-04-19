@@ -25,7 +25,7 @@ public class Project {
     @Column(updatable = false , unique = true)
     private String projectIdentifier;
     @NotBlank(message = "Project Description is required")
-    @Column(name = "description", length = 2000)
+    @Column( length = 2000)
     private String description;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date start_date;
@@ -37,7 +37,6 @@ public class Project {
     private Date created_At;
     @JsonFormat(pattern = "yyyy-mm-dd")
     private Date updated_At;
-
 
 
 
@@ -56,6 +55,12 @@ public class Project {
     @OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.ALL ,mappedBy = "project")
     @JsonIgnore
     private Backlog backlog;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    private User user;
+
+    private  String projectLeader;
 
     public String getProjectIdentifier() {
         return projectIdentifier.toUpperCase();
