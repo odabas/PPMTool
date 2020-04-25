@@ -6,5 +6,5 @@ public class SecurityConstants {
     public static final String SECRET = "SecretKeyToGenJWSTs";
     public static final String TOKEN_PREFIX ="Onur ";
     public static final String HEADER_AUTHORIZATION = "Authorization";
-    public static final int   EXPRATION_TIME = 30_000; // 30Seconds
+    public static final int   EXPRATION_TIME = 300_000; // 30 Seconds
 }
