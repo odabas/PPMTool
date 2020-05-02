@@ -1,0 +1,1 @@
+for local running "proxy": "http://localhost:8080"

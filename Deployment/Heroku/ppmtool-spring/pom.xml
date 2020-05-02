@@ -87,11 +87,24 @@
         </dependency>
     </dependencies>
 
+
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <appName>ppmv2</appName>
+                    <processTypes>
+                        <web>java $JAVA_OPTS -jar target/ppmtool-0.0.1-SNAPSHOT.jar</web>
+                    </processTypes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
